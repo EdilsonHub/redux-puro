@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>REDUX PURO</title>
+    <link rel="stylesheet" href="/css/main.css">
+
+  </head>
+  <body style="text-align: center">
+
+    <h1 id="nomeAluno">Sem nome<h1>
+    <h3 id="emailAluno">Sem email</h3>
+
+
+    <div>
+      <button id="diminuirDiasRestantes">-</button>
+        Dias restantes: <span id="diasRestantes"></span>
+      <button id="acrecentarDiasRestantes">+</button>
+    </div>
+
+    <br>
+
+    <div>
+      <input id="emailAlunoInput" placeholder="Digite aqui o novo email"/>   <button id="salvarAlteracoesEmail">Salvar alteração do email</button>
+    </div>
+
+    <div id="listaAulas"></div>
+
+    <div id="btnsAulas" >
+      <button id="btnAdicionarNovaAula">Adicionar nova aula</button>
+      <button id="btnConcluirCurso">Concluir curso</button>
+      <button id="btnResetarCurso">Resetar curso</button>
+    </div>
+
+    <script type="text/javascript" src="./plugins/redux.min.js"></script>
+    <script type="text/javascript" src="./plugins/immer.umd.production.min.js"></script>
+
+    <script type="module">
+      import { subscribe, acrecentarDiasRestantes, diminuirDiasRestantes, salvarAlteracoesEmail, completarTodasAulas, restarTodasAulas, adicionarNovaAula } from './Controller.js'
+
+      subscribe();
+
+      [
+        { id: "acrecentarDiasRestantes", func: acrecentarDiasRestantes },
+        { id: "diminuirDiasRestantes", func: diminuirDiasRestantes },
+        { id: "salvarAlteracoesEmail", func: salvarAlteracoesEmail },
+        { id: "btnConcluirCurso", func: completarTodasAulas },
+        { id: "btnResetarCurso", func: restarTodasAulas },
+        { id: "btnAdicionarNovaAula", func: adicionarNovaAula }
+      ].forEach(obj => document.getElementById(obj.id).addEventListener("click", obj.func));
+
+    </script>
+  </body>
+</html>
