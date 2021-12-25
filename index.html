@@ -34,7 +34,7 @@
     <script type="text/javascript" src="./plugins/immer.umd.production.min.js"></script>
 
     <script type="module">
-      import { subscribe, acrecentarDiasRestantes, diminuirDiasRestantes, salvarAlteracoesEmail, completarTodasAulas, restarTodasAulas, adicionarNovaAula } from './Controller.js'
+      import { subscribe, acrecentarDiasRestantes, diminuirDiasRestantes, salvarAlteracoesEmail, completarTodasAulas, restarTodasAulas, adicionarNovaAula, addEventoSegurarClickMouse } from './Controller.js'
 
       subscribe();
 
@@ -47,18 +47,15 @@
         { id: "btnAdicionarNovaAula", func: adicionarNovaAula }
       ].forEach(obj => document.getElementById(obj.id).addEventListener("click", obj.func));
 
-      const habilitaRotacao = (idBtn) => () => {
-        const interval = setInterval(() => acrecentarDiasRestantes(), 100);
-        const desabilitaRotacao = (desabilitar = true) => (desabilitar && clearInterval(interval));
-        setInterval(() => desabilitaRotacao(), 10000);
-        document.getElementById(idBtn).addEventListener("mouseup", desabilitaRotacao);
-      }
-
       [
-        { id: "acrecentarDiasRestantes" },
-        { id: "diminuirDiasRestantes" }
-      ].forEach(obj => document.getElementById(obj.id).addEventListener("mousedown", habilitaRotacao(obj.id)));
-
+        { id: "acrecentarDiasRestantes", func: acrecentarDiasRestantes },
+        { id: "diminuirDiasRestantes", func: diminuirDiasRestantes }
+      ].forEach(obj => {
+        let btn = document.getElementById(obj.id);
+        const [seguraClick, soltaClick] = addEventoSegurarClickMouse(obj.id, obj.func);
+        btn.addEventListener("mousedown", seguraClick);
+        document.querySelector('body').addEventListener("mouseup", soltaClick);
+      });
 
     </script>
   </body>

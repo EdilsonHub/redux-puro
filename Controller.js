@@ -63,6 +63,23 @@ function renderizaViewAluno({nome, email, diasRestantes}) {
   addValueElement("diasRestantes", diasRestantes);
 }
 
+function addEventoSegurarClickMouse(idBtn, funcao) {
+  let interval = null;
+  let timeoute = null;
+  const desabilitaAcao = () => {
+    clearInterval(interval);
+    clearTimeout(timeoute);
+  }
+  return [
+    () => {
+      desabilitaAcao();
+      interval = setInterval(funcao, 100);
+      timeoute = setTimeout(() => desabilitaRotacao(), 10000);
+    },
+    desabilitaAcao
+  ]
+}
+
 function subscribe() {
   render();
   addOnchangeAulas();
@@ -93,4 +110,4 @@ function adicionarNovaAula() {
   store.dispatch(addNovaAula(nomeNovaAula));
 }
 
-export {subscribe, acrecentarDiasRestantes, diminuirDiasRestantes, salvarAlteracoesEmail, completarTodasAulas, restarTodasAulas, adicionarNovaAula}
+export { subscribe, acrecentarDiasRestantes, diminuirDiasRestantes, salvarAlteracoesEmail, completarTodasAulas, restarTodasAulas, adicionarNovaAula, addEventoSegurarClickMouse }
