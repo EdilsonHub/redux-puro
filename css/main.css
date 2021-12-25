@@ -1,6 +1,15 @@
 #btnsAulas {
   margin: 20px
 }
+
+#emailAluno {
+  color: #ccc;
+}
+
+div.box-email {
+  margin-bottom: 20px;
+}
+
 table {
   min-width: 500px;
   border-collapse: collapse;

@@ -4,24 +4,22 @@
     <meta charset="utf-8">
     <title>REDUX PURO</title>
     <link rel="stylesheet" href="/css/main.css">
-
   </head>
   <body style="text-align: center">
 
-    <h1 id="nomeAluno">Sem nome<h1>
-    <h3 id="emailAluno">Sem email</h3>
+    <h1>
+      <span id="nomeAluno">Sem nome</span>
+      <span id="emailAluno">Sem email</span>
+    </h1>
 
+    <div class="box-email">
+      <input id="emailAlunoInput" placeholder="Digite aqui o novo email"/>   <button id="salvarAlteracoesEmail">Salvar alteração do email</button>
+    </div>
 
     <div>
       <button id="diminuirDiasRestantes">-</button>
         Dias restantes: <span id="diasRestantes"></span>
       <button id="acrecentarDiasRestantes">+</button>
-    </div>
-
-    <br>
-
-    <div>
-      <input id="emailAlunoInput" placeholder="Digite aqui o novo email"/>   <button id="salvarAlteracoesEmail">Salvar alteração do email</button>
     </div>
 
     <div id="listaAulas"></div>

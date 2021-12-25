@@ -22,7 +22,7 @@ function addOnchangeAulas() {
 }
 
 function renderizaViewAulas(aulas) {
-  const append = html => document.getElementById("listaAulas").innerHTML = html
+  const append = html => document.getElementById("listaAulas").innerHTML = html;
   const createTable = (trs) => (`
     <table style="margin: 20px auto auto auto" border="1">
       <thead>
@@ -44,7 +44,7 @@ function renderizaViewAulas(aulas) {
     <tr>
       <td>${aula.id}</td>
       <td>${aula.nome}</td>
-      <td>${aula.completa? 'COMPLETA': ''}</td>
+      <td>${aula.completa ? 'COMPLETA' : ''}</td>
     </tr>
   `).join('');
 
