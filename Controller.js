@@ -23,12 +23,16 @@ function addOnchangeAulas() {
 
 function renderizaViewAulas(aulas) {
   const append = html => document.getElementById("listaAulas").innerHTML = html;
+  const quantidadeAulas = aulas.length;
+  const quantidadeAulasCompletas = aulas.filter(aula => aula.completa).length;
+  const quantidaCompletas = `${quantidadeAulas} / ${quantidadeAulasCompletas}`;
+
   const createTable = (trs) => (`
     <table style="margin: 20px auto auto auto" border="1">
       <thead>
         <th>ID</th>
         <th>AULAS</th>
-        <th>STATUS DA AULA</th>
+        <th>STATUS ${quantidaCompletas}</th>
       </thead>
       <tbody>
       ${trs}

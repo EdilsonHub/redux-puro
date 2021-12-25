@@ -17,9 +17,9 @@
     </div>
 
     <div>
-      <button id="diminuirDiasRestantes">-</button>
+      <button id="diminuirDiasRestantes" class="circular subtrair">-</button>
         Dias restantes: <span id="diasRestantes"></span>
-      <button id="acrecentarDiasRestantes">+</button>
+      <button id="acrecentarDiasRestantes" class="circular">+</button>
     </div>
 
     <div id="listaAulas"></div>
@@ -39,13 +39,24 @@
       subscribe();
 
       [
-        { id: "acrecentarDiasRestantes", func: acrecentarDiasRestantes },
-        { id: "diminuirDiasRestantes", func: diminuirDiasRestantes },
         { id: "salvarAlteracoesEmail", func: salvarAlteracoesEmail },
         { id: "btnConcluirCurso", func: completarTodasAulas },
         { id: "btnResetarCurso", func: restarTodasAulas },
         { id: "btnAdicionarNovaAula", func: adicionarNovaAula }
       ].forEach(obj => document.getElementById(obj.id).addEventListener("click", obj.func));
+
+      const habilitaRotacao = (idBtn) => () => {
+        const interval = setInterval(() => acrecentarDiasRestantes(), 100);
+        const desabilitaRotacao = (desabilitar = true) => (desabilitar && clearInterval(interval));
+        setInterval(() => desabilitaRotacao(), 10000);
+        document.getElementById(idBtn).addEventListener("mouseup", desabilitaRotacao);
+      }
+
+      [
+        { id: "acrecentarDiasRestantes", func: acrecentarDiasRestantes },
+        { id: "diminuirDiasRestantes", func: diminuirDiasRestantes }
+      ].forEach(obj => document.getElementById(obj.id).addEventListener("mousedown", habilitaRotacao(obj.id)));
+
 
     </script>
   </body>

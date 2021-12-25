@@ -15,7 +15,7 @@ table {
   border-collapse: collapse;
 }
 
-table td, table th {
+table tbody td, table th {
   padding: 10px
 }
 
@@ -31,6 +31,49 @@ table tbody tr:hover {
 table td input {
   width: calc(100% - 20px);
   text-align: center;
+}
+
+button {
+  text-transform: uppercase;
+  margin: auto 10px;
+  background: #ccc;
+}
+
+button.circular {
+  padding: 0;
+  width: 35px;
+  height: 35px;
+  border-radius: 17px;
+  border: 2px solid #000;
+  color: #000;
+  font-weight: bolder;
+  font-size: 25px;
+  box-sizing: 1px 1px 1px solid #000;
+}
+
+button.circular {
+    transition: transform 1s;
+}
+
+button.circular:active {
+  transform: rotate(7200deg);
+  transition: transform linear 10s;
+}
+
+button.circular.subtrair:active {
+  transform: rotate(-7200deg);
+}
+
+button:active {
+  transform: scale(.96);
+}
+
+
+button, input {
+  padding: 10px;
+  box-shadow: 0 0 0 0;
+  border: 1px solid #000;
+  border-radius: 2px;
 }
 
 table td input, table td input:focus {
