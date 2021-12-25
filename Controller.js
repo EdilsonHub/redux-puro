@@ -15,7 +15,6 @@ function addOnchangeAulas() {
     if(n.target.tagName === 'TD') {
       // const idAula = n.path[1].querySelector('td').innerText; //isto não funciona no firefox;
       const idAula = n.target.parentNode.querySelector('td').innerText;
-      console.log(idAula);
       marcarAulaCompleta(idAula);
     }
   }
