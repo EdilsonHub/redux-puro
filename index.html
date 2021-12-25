@@ -39,6 +39,8 @@
       subscribe();
 
       [
+        { id: "acrecentarDiasRestantes", func: acrecentarDiasRestantes },
+        { id: "diminuirDiasRestantes", func: diminuirDiasRestantes },
         { id: "salvarAlteracoesEmail", func: salvarAlteracoesEmail },
         { id: "btnConcluirCurso", func: completarTodasAulas },
         { id: "btnResetarCurso", func: restarTodasAulas },
@@ -53,8 +55,8 @@
       }
 
       [
-        { id: "acrecentarDiasRestantes", func: acrecentarDiasRestantes },
-        { id: "diminuirDiasRestantes", func: diminuirDiasRestantes }
+        { id: "acrecentarDiasRestantes" },
+        { id: "diminuirDiasRestantes" }
       ].forEach(obj => document.getElementById(obj.id).addEventListener("mousedown", habilitaRotacao(obj.id)));
 
 

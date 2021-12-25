@@ -13,7 +13,9 @@ function addOnchangeAulas() {
   const lista = document.getElementById("listaAulas");
   const onclik = n => {
     if(n.target.tagName === 'TD') {
-      const idAula = n.path[1].querySelector('td').innerText;
+      // const idAula = n.path[1].querySelector('td').innerText; //isto não funciona no firefox;
+      const idAula = n.target.parentNode.querySelector('td').innerText;
+      console.log(idAula);
       marcarAulaCompleta(idAula);
     }
   }
