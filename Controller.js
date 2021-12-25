@@ -74,7 +74,7 @@ function addEventoSegurarClickMouse(idBtn, funcao) {
     () => {
       desabilitaAcao();
       interval = setInterval(funcao, 100);
-      timeoute = setTimeout(() => desabilitaRotacao(), 10000);
+      timeoute = setTimeout(() => desabilitaAcao(), 10000);
     },
     desabilitaAcao
   ]
